@@ -1,4 +1,4 @@
-const PostModel = require("../model/postsmodel")
+const {PostModel,commentModel} = require("../model/postsmodel")
 const userModel = require("../model/usermodel")
 const addPost = async (req,res)=>{
 
@@ -94,7 +94,7 @@ const deletePost = async  (req,res)=>{
     const postId = req.params.postId;
 
     try{
-        console.log(postId);
+        // console.log(postId);
         const IsPostAvailable = await PostModel.findById(postId);
         if(!IsPostAvailable){
             return res.status(404).json({
@@ -158,7 +158,7 @@ const postController = {
     addPost,
     updatePost,
     deletePost,
-    getPosts
+    getPosts,
 }
 
 module.exports = postController;
